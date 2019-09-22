@@ -64,13 +64,13 @@ def word_count(filename):
 
 def print_words(filename):
     countDict = word_count(filename)
-    for word in sorted(countDict.keys()) :
+    for word in sorted(countDict.keys()) : # Tri sur les clés
         print(word, " ", countDict[word])
 
 
 def print_top(filename):
     countDict = word_count(filename)
-    tupleList = sorted(countDict.items(),  key=lambda x: x[1], reverse=True)
+    tupleList = sorted(countDict.items(),  key=lambda x: x[1], reverse=True) # Dictionnaire transformé en liste de tuples triés
     i = 0;
     for elem in tupleList:
         print(elem[0], " ", elem[1])
