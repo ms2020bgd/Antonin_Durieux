@@ -47,13 +47,37 @@ import sys
 
 ###
 def word_count(filename):
-    pass
+    words = []
+    countDict = {}
+    with open(filename) as f:
+        for line in f:
+            for word in line.split():
+                word = ''.join(c for c in word if c.isalnum()) # Suppression des caractères spéciaux
+                words.append(word.lower())
+    for word in words:
+        if word in countDict.keys():
+            countDict[word] += 1
+        else:
+            countDict[word] = 1
+    return countDict
+    
 
 def print_words(filename):
-    pass
+    countDict = word_count(filename)
+    for word in sorted(countDict.keys()) :
+        print(word, " ", countDict[word])
+
 
 def print_top(filename):
-    pass
+    countDict = word_count(filename)
+    tupleList = sorted(countDict.items(),  key=lambda x: x[1], reverse=True)
+    i = 0;
+    for elem in tupleList:
+        print(elem[0], " ", elem[1])
+        i += 1
+        if (i == 20):
+            break;
+    
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
