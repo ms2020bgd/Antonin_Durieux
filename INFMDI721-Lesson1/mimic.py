@@ -53,7 +53,7 @@ def mimic_dict(filename):
     
     # "Nettoyage" des mots
     for i in range(len(words)):
-        words[i] = ''.join(c for c in words[i] if c.isalnum())
+        words[i] = words[i].strip(",?!.;:'()-/\"\\[]`_*")
 
     previousWord = ""
     wordDict = {}

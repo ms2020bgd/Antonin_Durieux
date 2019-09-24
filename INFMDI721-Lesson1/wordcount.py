@@ -52,7 +52,7 @@ def word_count(filename):
     with open(filename) as f:
         for line in f:
             for word in line.split():
-                word = ''.join(c for c in word if c.isalnum()) # Suppression des caractères spéciaux
+                word = word.strip(",?!.;:'()-/\"\\[]`_*") # Suppression des caractères spéciaux en début ou fin de word
                 words.append(word.lower())
     for word in words:
         if word in countDict.keys():
@@ -70,7 +70,7 @@ def print_words(filename):
 
 def print_top(filename):
     countDict = word_count(filename)
-    tupleList = sorted(countDict.items(),  key=lambda x: x[1], reverse=True) # Dictionnaire transformé en liste de tuples triés
+    tupleList = sorted(countDict.items(), key=lambda x: x[1], reverse=True) # Dictionnaire transformé en liste de tuples triés
     i = 0;
     for elem in tupleList:
         print(elem[0], " ", elem[1])
